@@ -1,0 +1,246 @@
+html{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: rgb(34,193,195);
+    background: linear-gradient(121deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.btn{
+    background-color: darkcyan;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15%;
+    border: white double 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 0 solid black;
+    align-items: center;    
+}
+
+h1{
+    font-size: 50px;
+    color: white;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    font-family: 'Libre Baskerville', serif;
+    
+}
+
+header>div{
+    width: 70vw;
+    text-align: right;
+    margin-bottom:20px;
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.restart{
+    font-size: 16px;
+    width: 300px;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.restart:hover{
+    opacity: 0.9;
+    color: aqua;
+}
+
+.introduction{
+    width: 70vw;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border: white 3px dotted;
+    margin: 0 auto;
+}
+
+.introduction>div:nth-of-type(1){
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20vw;
+    align-items: center;
+    margin-top: 5vh;
+    min-height: 30vh;
+}
+
+.introduction>div:nth-of-type(1)>div{
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+}
+
+.choice{
+    font-size: 30px;
+    color: white;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.choice:hover{
+    font-size: 35px;
+    color: aqua;
+}
+
+.question{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 70vw;
+    min-height: 30vh;
+    border: white 3px dotted;
+    margin: 0 auto;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: rgb(255, 255, 255,0.2);
+}
+
+.question>h2{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    margin: 0;
+}
+
+.question>.info-stand{
+    width: 100%;
+    border-top:white dotted 1px;
+    border-bottom: white dotted 1px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 13px;
+    justify-content: space-between;
+    text-align: center;
+    
+    
+}
+
+.question>.info-stand>p{
+    width: 32%;
+}
+
+.question>h4{
+    width: 100%;
+    text-align: center;
+}
+
+.question>ul{
+    margin: 0;
+}
+
+.question>ul>li{
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.question>ul>li:hover{
+    color:aqua;
+    
+}
+
+.end{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    text-align: center;
+    align-items: center;
+    width: 70vw;
+    min-height: 40vh;
+    border: white 3px dotted;
+    margin: 0 auto;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: rgb(255, 255, 255,0.2);
+}
+
+.submit-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.submit-container>input{
+    background-color: transparent;
+    border: white double 5px;
+    padding: 2px 5px;
+    color: white;
+    font-size: 16px;
+}
+
+.submit-container>input::placeholder{
+    color:white;
+}
+
+.btn-end-list{
+    background-color: darkgoldenrod;
+    margin: 10px 0;
+}
+
+.leaderboard{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    
+}
+
+.leaderboard>li{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.5);
+}
+
+.leaderboard>li>p{
+    width: 32%;
+}
+
+.statistic-block{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    padding: 5px;
+    text-align: left;
+}
+
+
+
+.noshow{
+    display: none;
+}
