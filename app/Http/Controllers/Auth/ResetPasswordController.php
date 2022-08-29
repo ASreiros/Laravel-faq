@@ -11,17 +11,29 @@ use Illuminate\Support\Str;
 
 class ResetPasswordController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $token = $request->token;
+
+        return view('auth.reset-password', ['token' => $token]);
+    }
+
     public function post(Request $request)
     {
+
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|max:100|min:5|confirmed',
         ]);
 
+
+
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {
+
                 $user->forceFill([
                     'password' => Hash::make($password)
                 ])->setRememberToken(Str::random(60));

@@ -19,8 +19,7 @@ class Answers extends Migration
             $table->string('testnumber');
             $table->tinyInteger('questionnumber');
             $table->tinyInteger('answernumber');
-            $table->tinyInteger('correctanswer');
-
+            $table->tinyInteger('points');
         });
     }
 

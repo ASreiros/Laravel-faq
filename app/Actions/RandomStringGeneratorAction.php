@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Actions;
 
-use Illuminate\Http\Request;
 
-class RandomServiceController extends Controller
+class RandomStringGeneratorAction
+
 {
-    public function randomString($l)
+    public function generateString($l)
     {
         $randomString = "";
         $characterArray =  str_split("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");

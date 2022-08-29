@@ -11,12 +11,12 @@
         </div>
         <h4>{{$currentQuestion}}</h4>
         <ul>
-            @foreach ($currentAnswers as $answer)
+            @foreach ($answers as $answer)
                 <li>
                     <form action="{{ route('answer')}}" method="post">
                         @csrf
-                        <input type="hidden" id="a{{$answer[0]}}" name="answer" value="{{$answer[0]}}">
-                        <button class="answer" type="submit">{{$answer[1]}}</button>
+                        <input type="hidden" id="a{{$answer["answernumber"]}}" name="answer" value="{{$answer["answernumber"]}}">
+                        <button class="answer" type="submit">{{$answer["answertext"]}}</button>
                     </form>
                 </li>
             @endforeach

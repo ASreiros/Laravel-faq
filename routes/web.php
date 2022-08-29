@@ -14,6 +14,8 @@ use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\SubmitController;
 use Illuminate\Support\Facades\Route;
 
+//Auth routes
+
 Route::get('/', [StartController::class, 'goHome'])->name('start')->middleware("auth");
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware("guest");
@@ -27,34 +29,29 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout')->midd
 Route::get('/forgot-password', [ForgotPasswordController::class, "index"])->middleware('guest')->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, "post"])->middleware('guest')->name('password.email');
 
-Route::get('/reset-password/{token}', function ($token) {
-
-    return view('auth.reset-password', ['token' => $token]);
-})->middleware('guest')->name("password.reset");
-
+Route::get('/reset-password', [ResetPasswordController::class, "index"])->middleware('guest')->name("password.reset");
 Route::post('/reset-password', [ResetPasswordController::class, "post"])->middleware('guest')->name('password.update');
+
+
+//Main routes
 
 Route::get('/home', [StartController::class, 'goHome'])->name('home')->middleware("auth");
 
-Route::get('/restart', [DeleteController::class, 'delete'])->name("restart")->middleware("auth");
 Route::post('/restart', [DeleteController::class, 'delete'])->name("restart")->middleware("auth");
 
-Route::get('/startTest', [StartTestController::class, "start"])->middleware("auth");
+Route::get('/startTest', [StartTestController::class, "start"])->middleware("auth"); // should be post
 
 Route::get('/question', [QuestionController::class, "goQuestion"])->name("question")->middleware("auth");
-
 Route::post('/question', [QuestionController::class, "answer"])->name("answer")->middleware("auth");
 
-Route::get('/submit', [SubmitController::class, "index"])->name("submit")->middleware("auth");
-
 Route::get('/leaderboard', [LeaderboardController::class, "index"])->name("leaderboard");
+Route::post('/leaderboard', [LeaderboardController::class, "filter"])->name("leaderboardFilter");
+Route::post('/leaderboardDelete', [LeaderboardController::class, "delete"])->name("leaderboardDelete")->middleware("auth");
 
-Route::post('/leaderboard', [LeaderboardController::class, "add"])->name("leaderboardAdd")->middleware("auth");
+Route::post('/statistics', [StatisticsController::class, "statistics"])->name("statistics")->middleware("auth");
+
+//routes needs updates below
+
+
 
 Route::get('/statistics', [StatisticsController::class, "index"])->name("statistics")->middleware("auth");
-
-
-//Route::get('/{any}', function ($any) {
-//
-//    return view('pages.notfound');
-//})->where('any', '.*');

@@ -5,7 +5,7 @@
 <div class="end">
     <h2>Questions and answers</h2>
     <p>`Below are all the questions from the test. Your answers marked in <span style="color: yellow">yellow</span>, correct answers marked in <span style="color: lightgreen">green</span>, if your answer was correct, then it will be marked in <span style="color: aqua">blue</span>. You can see how many points question was worth after question (points).</p>
-    <a id="btn-lb" class="btn btn-end-list" href="/submit">RETURN</a> 
+    <a id="btn-lb" class="btn btn-end-list" href="{{route('leaderboard')}}">RETURN</a> 
     
     @foreach ($statistics as $set)
         <div class="statistic-block">
@@ -20,7 +20,7 @@
         </div>
     @endforeach
     
-    <a id="btn-lb" class="btn btn-end-list" href="/submit">RETURN</a> 
+    <a id="btn-lb" class="btn btn-end-list" href="{{route('leaderboard')}}">RETURN</a> 
 
 
 </div>

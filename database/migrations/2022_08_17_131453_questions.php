@@ -18,7 +18,6 @@ class Questions extends Migration
             $table->text('questiontext');
             $table->string('testnumber');
             $table->tinyInteger('questionnumber');
-            $table->tinyInteger('points');
         });
     }
 

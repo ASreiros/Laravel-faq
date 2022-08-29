@@ -16,10 +16,11 @@ class Leaderboard extends Migration
         Schema::create('leaderboards', function (Blueprint $table) {
             $table->increments("id");
             $table->string('username');
-            $table->string('name');
+            $table->string('identifier');
             $table->string('testnumber');
             $table->tinyInteger('points');
             $table->json('statistics');
+            $table->timestamp('created_at');
         });
     }
 

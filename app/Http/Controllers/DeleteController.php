@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\StartController;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Actions\DeleteTestAction;
 
 class DeleteController extends Controller
 {
-    public function delete()
+    public function delete(DeleteTestAction $deleteTestAction)
     {
-        session_start();
-        session_unset();
-        session_destroy();
-        setcookie("username", "", time() - 3600);
+        $username = Auth()->user()->username;
+        $deleteTestAction->deleteTesting($username);
         return redirect()->route('home');
     }
 }

@@ -16,12 +16,14 @@ class Ongoings extends Migration
         Schema::create('ongoings', function (Blueprint $table) {
             $table->increments("id");
             $table->string('username');
-            $table->string('name');
+            $table->string('identifier');
             $table->string('testnumber');
             $table->tinyInteger('points');
             $table->tinyInteger('currentquestion');
             $table->json('questionlist');
             $table->json('statistics');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
         });
     }
 

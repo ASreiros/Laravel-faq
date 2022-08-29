@@ -12,6 +12,7 @@
     <header>
         <h1>FAQ</h1>
         <div class="infoblock">
+            <a href="{{route('leaderboard')}}">Leaderboard</a>
             @yield('linkspace')
         </div>
     </header>
