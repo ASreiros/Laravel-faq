@@ -9,7 +9,7 @@ class StartTestController extends Controller
 {
     public function start(Request $request, TestStartService $TestStartService)
     {
-        $testName = $request->key;
+        $testName = $request->test;
         $username = Auth()->user()->username;
         $TestStartService->startTest($testName, $username);
 

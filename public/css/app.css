@@ -134,11 +134,14 @@ header>div>a:last-child{
 
 .choice{
     font-size: 30px;
+    background-color: transparent;
+    border: none;
     color: white;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     cursor: pointer;
     text-decoration: none;
     text-transform: uppercase;
+    font-family: 'Libre Baskerville', serif;
 }
 
 .choice:hover{
@@ -147,9 +150,6 @@ header>div>a:last-child{
     text-decoration: none;
 }
 
-.choice:visited{
-    text-decoration: none;
-}
 
 
 

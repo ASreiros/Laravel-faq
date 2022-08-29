@@ -4,12 +4,16 @@
 @section('content')
     <div id="intro" class="introduction">
         <div>
-            <div>
-                <a id="t1" class="choice" href="/startTest?key=t1">PHP test</a>
-            </div>
-            <div>
-                <a id="t2" class="choice" href="/startTest?key=t2">JS test</a>
-            </div>
+            <form action="{{ route('startTest')}}" method="post">
+                @csrf
+                <input type="hidden" name="test" value="t1">
+                <button class="choice" type="submit">PHP TEST</button>
+            </form>
+            <form action="{{ route('startTest')}}" method="post">
+                @csrf
+                <input type="hidden" name="test" value="t2">
+                <button class="choice" type="submit">JS TEST</button>
+            </form>
         </div>
         <a id="btn-lb" class="btn btn-end-list" href="/leaderboard">Leaderboard</a>  
     </div>  

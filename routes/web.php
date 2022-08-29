@@ -39,7 +39,7 @@ Route::get('/home', [StartController::class, 'goHome'])->name('home')->middlewar
 
 Route::post('/restart', [DeleteController::class, 'delete'])->name("restart")->middleware("auth");
 
-Route::get('/startTest', [StartTestController::class, "start"])->middleware("auth"); // should be post
+Route::post('/startTest', [StartTestController::class, "start"])->name('startTest')->middleware("auth");
 
 Route::get('/question', [QuestionController::class, "goQuestion"])->name("question")->middleware("auth");
 Route::post('/question', [QuestionController::class, "answer"])->name("answer")->middleware("auth");
@@ -50,7 +50,7 @@ Route::post('/leaderboardDelete', [LeaderboardController::class, "delete"])->nam
 
 Route::post('/statistics', [StatisticsController::class, "statistics"])->name("statistics")->middleware("auth");
 
-//routes needs updates below
+//routes needs updates below 
 
 
 
