@@ -29,35 +29,38 @@
                     <p>{{$leader["testnumber"]=== "t1"? "PHP TEST":"JS TEST"}}</p>
                     <p>{{$leader["points"]}}</p>
                     <div class="control-btn-container">
-                        
-                        @if ($leader["username"] === auth()->user()->username)
-                            <form action="{{route('statistics')}}" method="POST">
-                                @csrf
-                                <input type="hidden" name="name" value="{{$leader["username"]}}">
-                                <input type="hidden" name="identifier" value="{{$leader["identifier"]}}">
-                                <button type="submit" class="btn btn-yellow">Statistics</button>
-                            </form>
-                            <form action="{{route('leaderboardDelete')}}" method="POST">
-                                @csrf
-                                <input type="hidden" name="name" value="{{$leader["username"]}}">
-                                <input type="hidden" name="identifier" value="{{$leader["identifier"]}}">
-                                <button type="submit" onclick="clicked(event)" class="btn btn-red">Delete</button>
-                            </form>
-                            <script>
-                                function clicked(e)
-                                {
-                                    if(!confirm('Are you sure?')) {
-                                        e.preventDefault();
+                        @auth
+                            @if ($leader["username"] === auth()->user()->username)
+                                <form action="{{route('statistics')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="name" value="{{$leader["username"]}}">
+                                    <input type="hidden" name="identifier" value="{{$leader["identifier"]}}">
+                                    <button type="submit" class="btn btn-yellow">Statistics</button>
+                                </form>
+                                <form action="{{route('leaderboardDelete')}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="name" value="{{$leader["username"]}}">
+                                    <input type="hidden" name="identifier" value="{{$leader["identifier"]}}">
+                                    <button type="submit" onclick="clicked(event)" class="btn btn-red">Delete</button>
+                                </form>
+                                <script>
+                                    function clicked(e)
+                                    {
+                                        if(!confirm('Are you sure?')) {
+                                            e.preventDefault();
+                                        }
                                     }
-                                }
-                            </script>
-                        @endif
-                        </div>
+                                </script>
+                            @endif
+                        @endauth    
+                    </div>
                 </li>
             @endforeach
+            @auth
                 <p class="bottom-info">
-                   {{auth()->user()->username}} tried to solve tests {{$count}} times, average result is {{$average}}
+                    {{auth()->user()->username}} tried to solve tests {{$count}} times, average result is {{$average}}
                 </p>
+            @endauth
         @else
             <h3>NO LEADERS YET</h3>
         @endif
