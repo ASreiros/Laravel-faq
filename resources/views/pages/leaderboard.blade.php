@@ -41,7 +41,6 @@
                                 @csrf
                                 <input type="hidden" name="name" value="{{$leader["username"]}}">
                                 <input type="hidden" name="identifier" value="{{$leader["identifier"]}}">
-                                <input type="hidden" name="identifier" value="{{$leader["testnumber"]}}">
                                 <button type="submit" onclick="clicked(event)" class="btn btn-red">Delete</button>
                             </form>
                             <script>
@@ -56,6 +55,9 @@
                         </div>
                 </li>
             @endforeach
+                <p class="bottom-info">
+                   {{auth()->user()->username}} tried to solve tests {{$count}} times, average result is {{$average}}
+                </p>
         @else
             <h3>NO LEADERS YET</h3>
         @endif

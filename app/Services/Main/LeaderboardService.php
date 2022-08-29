@@ -46,12 +46,29 @@ class LeaderboardService
         }
 
         $current = $username;
+        $count = 0;
+        $pointsAverage = 0;
+
+
 
         if ($current !== "null") {
             $current = User::select("identifier")->where("username", $username)->first();
             $current = $current["identifier"];
+            $pointsTotal = 0;
+
+            for ($i = 0; $i < count($leaders); $i++) {
+                if ($leaders[$i]["username"] === $username) {
+                    $count++;
+                    $pointsTotal = $pointsTotal + $leaders[$i]["points"];
+                }
+            }
+
+            if ($count !== 0) {
+                $pointsAverage = round($pointsTotal / $count, 2);
+            }
         }
 
-        return ["leaders" => $leaders, "current" => $current, "placeholder" => $placeholder, "sortby" => $sortby, "test" => $test];
+
+        return ["leaders" => $leaders, "current" => $current, "placeholder" => $placeholder, "sortby" => $sortby, "test" => $test, "count" => $count, "average" => $pointsAverage];
     }
 }

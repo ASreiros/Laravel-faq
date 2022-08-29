@@ -8,6 +8,6 @@ class DeleteTryAction
 {
     public function delete($username, $identifier)
     {
-        Leaderboard::where(["username" => $username, "identifier" => $identifier])->delete();
+        $try = Leaderboard::where(["username" => $username, "identifier" => $identifier])->delete();
     }
 }
