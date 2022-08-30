@@ -45,12 +45,11 @@ Route::get('/question', [QuestionController::class, "goQuestion"])->name("questi
 Route::post('/question', [QuestionController::class, "answer"])->name("answer")->middleware("auth");
 
 Route::get('/leaderboard', [LeaderboardController::class, "index"])->name("leaderboard");
-Route::post('/leaderboard', [LeaderboardController::class, "filter"])->name("leaderboardFilter");
 Route::post('/leaderboardDelete', [LeaderboardController::class, "delete"])->name("leaderboardDelete")->middleware("auth");
 
 Route::post('/statistics', [StatisticsController::class, "statistics"])->name("statistics")->middleware("auth");
 
-//routes needs updates below 
+//routes needs updates below
 
 
 

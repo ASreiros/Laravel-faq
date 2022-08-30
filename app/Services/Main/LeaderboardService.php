@@ -9,35 +9,12 @@ class LeaderboardService
 {
     public function index($username, $sortby, $test)
     {
-
-
-
-        if ($test === null) {
-            $test = "all";
-        }
-
-        if ($sortby === null) {
-            $sortby = "points";
-        }
-
-        $leaders = [];
-        $direction = "Desc";
-
-        if ($sortby === "username") {
-            $direction = "Asc";
-        }
-
-        if ($test === "all") {
-            $leaders = Leaderboard::select("*")
-                ->orderBy($sortby, $direction)
-                ->get();
-        } else {
-            $leaders = Leaderboard::select("*")
-                ->orderBy($sortby, $direction)
-                ->where("testnumber", $test)
-                ->get();
-        }
-
+        $leaders = Leaderboard::select("*")
+            ->orderBy($sortby, $sortby === "username" ? 'ASC' : 'DESC')
+            ->when($test !== 'all', function ($query) use ($test) {
+                $query->where("testnumber", $test);
+            })
+            ->get();
 
         $placeholder = 0;
 
@@ -45,21 +22,19 @@ class LeaderboardService
             $placeholder = 1;
         }
 
-        $current = $username;
+        $current = null;
         $count = 0;
         $pointsAverage = 0;
 
-
-
-        if ($current !== "null") {
+        if ($username) {
             $current = User::select("identifier")->where("username", $username)->first();
             $current = $current["identifier"];
             $pointsTotal = 0;
 
-            for ($i = 0; $i < count($leaders); $i++) {
+            for ($i = 0, $iMax = count($leaders); $i < $iMax; $i++) {
                 if ($leaders[$i]["username"] === $username) {
                     $count++;
-                    $pointsTotal = $pointsTotal + $leaders[$i]["points"];
+                    $pointsTotal += $leaders[$i]["points"];
                 }
             }
 
@@ -67,7 +42,6 @@ class LeaderboardService
                 $pointsAverage = round($pointsTotal / $count, 2);
             }
         }
-
 
         return ["leaders" => $leaders, "current" => $current, "placeholder" => $placeholder, "sortby" => $sortby, "test" => $test, "count" => $count, "average" => $pointsAverage];
     }
