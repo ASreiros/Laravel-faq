@@ -40,7 +40,7 @@
             </div>
 
             <div>
-                <button class="btn btn-submit" type="submit">Register</button>
+                <button class="btn btn-submit" name="register" type="submit">Register</button>
             </div>
 
         </form>
