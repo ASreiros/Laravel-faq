@@ -2,20 +2,19 @@
 
 
 @section('content')
-<div class="end">
-    <h2>LEADERBOARD</h2>
-    <form action="{{route('leaderboardFilter')}}" method="POST" class="filter-form">
-        @csrf
-        <label for="tests">Show results from</label>
-        <select id="tests" name="tests">
-            <option value="all" {{$test === "all"? 'selected' :""}}>All tests</option>
-            <option value="t1" {{$test === "t1"? 'selected' :""}}>PHP test</option>
-            <option value="t2" {{$test === "t2"? 'selected' :""}}>JS test</option>
-          </select>
-          <label for="sortby">Sort by</label>
-          <select id="sortby" name="sortby">
-            <option value="points" {{$sortby === "points"? 'selected' :""}}>Result</option>
-            <option value="username" {{$sortby === "username"? 'selected' :""}}>User</option>
+    <div class="end">
+        <h2>LEADERBOARD</h2>
+        <form action="{{route('leaderboard')}}" method="GET" class="filter-form">
+            <label for="tests">Show results from</label>
+            <select id="tests" name="tests">
+                <option value="all" {{$test === "all"? 'selected' :""}}>All tests</option>
+                <option value="t1" {{$test === "t1"? 'selected' :""}}>PHP test</option>
+                <option value="t2" {{$test === "t2"? 'selected' :""}}>JS test</option>
+            </select>
+            <label for="sortby">Sort by</label>
+            <select id="sortby" name="sortby">
+                <option value="points" {{$sortby === "points"? 'selected' :""}}>Result</option>
+                <option value="username" {{$sortby === "username"? 'selected' :""}}>User</option>
             <option value="created_at" {{$sortby === "created_at"? 'selected' :""}}>Newest</option>
           </select>
         <button class="btn" type="submit">Filter</button>
@@ -52,7 +51,7 @@
                                     }
                                 </script>
                             @endif
-                        @endauth    
+                        @endauth
                     </div>
                 </li>
             @endforeach
