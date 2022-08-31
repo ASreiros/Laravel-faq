@@ -2,7 +2,7 @@
 
 
 @section('linkspace')
-    <a href="{{route("register")}}">Register</a>
+    <a id="registerLink" class="selector1" href="{{route("register")}}">Register</a>
 @endsection
 
 @section('content')
@@ -41,7 +41,7 @@
             </div>
 
             <div class="input-container">
-                <a href="{{route('password.request')}}">Forgot password?</a>
+                <a id="forgotPasswordLink" href="{{route('password.request')}}">Forgot password?</a>
             </div>
            
 

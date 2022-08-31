@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Leaderboard extends Model
 {
+    use HasFactory;
     public $timestamps = false;
 }

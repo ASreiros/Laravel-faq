@@ -5,10 +5,13 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class RegisterPageTest extends TestCase
 {
+
+
 
 
     public function test_register_route_for_guest()
@@ -20,7 +23,10 @@ class RegisterPageTest extends TestCase
 
     public function test_register_route_for_user()
     {
-        $user = User::first();
+        $user = new User([
+            'id' => 999,
+            "username" => "tester"
+        ]);
         $this->actingAs($user);
         $response = $this->get('/register');
         $response->assertStatus(302);

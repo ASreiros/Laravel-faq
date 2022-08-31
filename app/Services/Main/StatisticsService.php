@@ -6,6 +6,7 @@ use App\Models\Answer;
 use App\Models\Leaderboard;
 use App\Models\Question;
 
+
 class StatisticsService
 {
     public function index($username, $identifier)
@@ -14,6 +15,7 @@ class StatisticsService
             ->first();
 
         $statistics = json_decode($userInfo["statistics"]);
+
         $test = $userInfo["testnumber"];
 
         $questions = Question::select("*")

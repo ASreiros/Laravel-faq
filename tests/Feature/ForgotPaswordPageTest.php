@@ -5,10 +5,13 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
+use Tests\Unit\Setup;
 
 class ForgotPaswordPageTest extends TestCase
 {
+
     /**
      * A basic feature test example.
      *
@@ -23,7 +26,10 @@ class ForgotPaswordPageTest extends TestCase
 
     public function test_forgot_pasword_page_for_user()
     {
-        $user = User::first();
+        $user = new User([
+            'id' => 999,
+            "username" => "tester"
+        ]);
         $this->actingAs($user);
         $response = $this->get('/forgot-password');
         $response->assertStatus(302);

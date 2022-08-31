@@ -5,10 +5,12 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class ResetPaswordPageTest extends TestCase
 {
+
     /**
      * A basic feature test example.
      *
@@ -23,7 +25,10 @@ class ResetPaswordPageTest extends TestCase
 
     public function test_reset_pasword_page_for_user()
     {
-        $user = User::first();
+        $user = new User([
+            'id' => 999,
+            "username" => "tester"
+        ]);
         $this->actingAs($user);
         $response = $this->get('/reset-password');
         $response->assertStatus(302);

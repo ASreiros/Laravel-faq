@@ -5,18 +5,18 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class HomePageTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+
     public function test_homepage_route_for_logged_user()
     {
-        $user = User::first();
+        $user = new User([
+            'id' => 999,
+            "username" => "tester"
+        ]);
         $this->actingAs($user);
         $response = $this->get('/home');
 
@@ -34,7 +34,10 @@ class HomePageTest extends TestCase
 
     public function test_default_route_for_logged_user()
     {
-        $user = User::first();
+        $user = new User([
+            'id' => 999,
+            "username" => "tester"
+        ]);
         $this->actingAs($user);
         $response = $this->get('/');
 

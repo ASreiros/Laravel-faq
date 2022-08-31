@@ -13,11 +13,12 @@ class LoginTest extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function test_login_link_leaderboard()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
+            $browser->visit('/login')
+                ->assertPathIs('/login')
+                ->assertSee("Login");
         });
     }
 }

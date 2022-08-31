@@ -5,10 +5,12 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class StatisticsPageTest extends TestCase
 {
+
     /**
      * A basic feature test example.
      *
@@ -16,7 +18,10 @@ class StatisticsPageTest extends TestCase
      */
     public function test_statistics_route_for_logged_user()
     {
-        $user = User::first();
+        $user = new User([
+            'id' => 999,
+            "username" => "tester"
+        ]);
         $this->actingAs($user);
         $response = $this->get('/statistics');
         $response->assertStatus(302);
